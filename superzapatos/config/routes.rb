@@ -1,4 +1,12 @@
 Superzapatos::Application.routes.draw do
+  resources :articles
+
+
+  get "greetings/hello"
+
+  resources :stores
+root to: "stores#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
