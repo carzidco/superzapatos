@@ -6,6 +6,7 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      
       #Sending name and address only as requested
       @storesJson = Store.select('id, name, address')
       format.json { render :json => { :stores => @storesJson, :success => true, :total_elements => Store.count } }

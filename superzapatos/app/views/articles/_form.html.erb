@@ -31,6 +31,8 @@
     <%= f.label :total_in_vault %><br />
     <%= f.number_field :total_in_vault %>
   </div>
+
+  <!-- Populates dropdown with Store Names -->
   <div class="field">
     <%= f.label :store %><br />
     <%= f.collection_select(:store_id, Store.all, :id, :name) %>

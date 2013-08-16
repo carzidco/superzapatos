@@ -8,23 +8,30 @@ class ArticlesController < ApplicationController
   end
 
   def index
+
+    # Articles from an specific store
     if params[:store_id]
       @articles = Article.where(:store_id => params[:store_id])
       @articlesJson = Store.joins(:articles).where(:id => params[:store_id]).select('articles.id as "id", articles.description, articles.name, articles.price, articles.total_in_shelf, articles.total_in_vault, stores.name as "store_name"')
+    
+    #All articles
     else  
       @articles = Article.all
       @articlesJson = Store.joins(:articles).select('articles.id as "id", articles.description, articles.name, articles.price, articles.total_in_shelf, articles.total_in_vault, stores.name as "store_name"')
     end
-    @element_count = Article.count
 
     respond_to do |format|
       format.html # index.html.erb
+
+      #Exceptions
       if @articlesJson.blank?
         if is_numeric?(params[:store_id])
           format.json { render :json => {:error_msg => "Record not Found", :success => false } }
         else
           format.json { render :json => {:error_msg => "Bad Request", :success => false } }
         end
+
+      #Sent Data
       else
         format.json { render :json => { :articles => @articlesJson, :success => true, :total_elements => @articlesJson.count } }
       end
