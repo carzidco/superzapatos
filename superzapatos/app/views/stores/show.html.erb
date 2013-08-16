@@ -4,7 +4,7 @@
   <b>Name:</b>
   <%= @store.name %>
   <%= link_to link_to image_tag("edit.gif", :border=>0, :class => 'edit'), edit_store_path(@store) %>
-  <%= link_to link_to image_tag("delete.gif", :border=>0, :class => 'remove'), @store, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to link_to image_tag("delete.gif", :border=>0, :class => 'delete'), @store, method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
 
 <p>

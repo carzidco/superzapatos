@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+.home1 a{
+	margin-bottom: 20px;
+	color: #8FD8D8 !important;
+}
+
+.delete, .edit {
+	background: none;
+	color: #fff;
+	border: 0;
+	width: 10px;
+}
+.edit {
+	width: 15px;
+}

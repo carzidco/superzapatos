@@ -1,33 +1,30 @@
-<h1>Listing articles</h1>
+<h2>Listing articles</h2>
 
+<% if Store.count > 0 %>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Total in shelf</th>
-    <th>Total in vault</th>
-    <th>Store</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
+<% if Article.count > 0 %>
 
 <% @articles.each do |article| %>
   <tr>
-    <td><%= article.name %></td>
-    <td><%= article.description %></td>
-    <td><%= article.price %></td>
-    <td><%= article.total_in_shelf %></td>
-    <td><%= article.total_in_vault %></td>
-    <td><%= article.store_id %></td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to article.name, article %></td>
+    <td><%= link_to image_tag("edit.gif", :border=>0, :class => 'edit'), edit_article_path(article) %></td>
+    <td><%= link_to image_tag("delete.gif", :border=>0, :class => 'delete'), article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
 <br />
-
 <%= link_to 'New Article', new_article_path %>
+<% else %>
+	No Articles Found. Be the first to add <%= link_to 'new Article', new_article_path %>
+<% end %>
+
+<% else %>
+    You can't add articles if  you don't have stores, <br />
+    go ahead and <strong><%= link_to 'add a store', new_store_path %></strong>
+<% end %>
+<% if Store.count == 0 %>
+        
+<% end %>
+

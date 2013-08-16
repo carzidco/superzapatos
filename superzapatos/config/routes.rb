@@ -6,6 +6,7 @@ Superzapatos::Application.routes.draw do
 
   resources :stores
 root to: "stores#index"
+match ':store_id' => 'articles#index', :as => 'store_articles'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
